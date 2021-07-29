@@ -1,0 +1,204 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset238 Calibri;}{\f1\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue255;\red0\green77\blue187;\red255\green0\blue0;\red165\green165\blue165;\red255\green255\blue0;\red155\green0\blue211;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\lang1045\f0\fs22 Python po\'bfyteczne ze strony python101 i {\field{\*\fldinst{HYPERLINK "https://note.nkmk.me/en/python/"}}{\fldrslt{\ul\cf1 https://note.nkmk.me/en/python/}}}\f0\fs22\par
+#! /usr/bin/env python\par
+# -*- coding: UTF-8 -*-\par
+\par
+# ~/python/04_1_listy.py\par
+TEORIA:\par
+tupla = input("Podaj liczby oddzielone przecinkami: ")\par
+lista = [] # deklaracja pustej listy\par
+for i in range(len(tupla)):\par
+    lista.append(int(tupla[i]))\par
+RZECZYWISTO\'8c\'c6:\par
+tupla = (input("Podaj liczby nieoddzielone niczym: "))\par
+print(tupla)\par
+lista = []\par
+for i in tupla:\par
+    lista.append(i)\par
+print ("taka oto lista: \{\}".format(lista))\par
+\par
+list = []\par
+for i in (tupla):\par
+    try:\par
+        (int(i))\par
+    except:\par
+        print ('error')\par
+        continue\par
+    list.append(i)\par
+print (list)\par
+\cf2 Podaj liczby oddzielone przecinkami: 123e\par
+123e\par
+taka lista: ['1', '2', '3', 'e']\par
+error\tab\tab # bo e nie jest int i wywaliloby errora, gdyby nie try/except\par
+['1', '2', '3']\cf0\par
+\par
+\par
+---------------------------------------------\par
+print "Elementy i ich indeksy:"\par
+for i, v in enumerate(lista):\par
+    print v, "[",i,"]"\par
+\par
+print "Elementy w odwr\'f3conym porz\'b9dku:"\par
+for e in reversed(lista):\par
+    print e,\par
+\par
+print ""\par
+print "Elementy posortowane rosn\'b9co:"\par
+for e in sorted(lista):\par
+    print e,\par
+\par
+print ""\par
+e = int(raw_input("Kt\'f3r\'b9 liczb\'ea usun\'b9\'e6? "))\par
+lista.remove(e)\par
+print lista\par
+\par
+a, i = input("Podaj element do dodania i indeks, przed kt\'f3rym ma si\'ea on znale\'9f\'e6: ")\par
+lista.insert(i, a)\par
+print lista\par
+\par
+e = int(raw_input("Podaj liczb\'ea, kt\'f3rej wyst\'b9pienia w li\'9ccie chcesz zliczy\'e6? "))\par
+print lista.count(e)\par
+print "Pierwszy indeks, pod kt\'f3rym zapisana jest podana liczba to: "\par
+print lista.index(e)\par
+\par
+print "Pobieramy ostatni element z listy: "\par
+print lista.pop()\par
+print lista\par
+\par
+i, j = input("Podaj indeks pocz\'b9tkowy i ko\'f1cowy, aby uzyska\'e6 frgament listy: ")\par
+print lista[i:j]\par
+\par
+\'bfeby dzia\'b3a\'b3o:\par
+\cf3 lista = [0,1,2,3,4,5,6,7,8,9,10]\cf0\par
+\cf3 i = int(message.show("Podaj indeks pocz\'b9tkowy, aby uzyska\'e6 frgament listy: "))\par
+j = int(message.show('i koncowy'))\par
+print lista[i:j]\par
+# podaj\'ea \par
+i = 2\par
+j = 5\par
+wynik:\tab #  [2, 3, 4]\par
+\cf0\par
+\par
+----ze strony {\field{\*\fldinst{HYPERLINK "https://www.kodolamacz.pl/blog/wyzwanie-python-4-programowanie-obiektowe/"}}{\fldrslt{\ul\cf1 https://www.kodolamacz.pl/blog/wyzwanie-python-4-programowanie-obiektowe/}}}\f0\fs22\par
+class Osoba:\par
+    def __init__(self, imie, nazwisko, wiek):\par
+        self.imie = imie\par
+        self.nazwisko = nazwisko\par
+        self.wiek = wiek\par
+    def przedstaw_sie(self):\par
+\cf3         print "Jestem \{0\} \{1\}. Mam \{2\} lat.".format(self.imie,self.nazwisko,self.wiek)\par
+\cf0     def urodziny(self):\par
+        wiek_przed = self.wiek\par
+        self.wiek += 1\par
+        return wiek_przed\par
+# (na stronie tutaj by\'b3o \b def (main):\b0  ale nie dzia\'b3a\'b3o)\par
+# tworzymy dwa obiekty klasy Osoba\par
+Jan = Osoba("Jan", "Nowak", 48)\par
+Adam = Osoba("Adam", "Mickiewicz", 220)\par
+    \par
+# wywo\'b3ujemy metod\'ea przedstaw_sie() na ka\'bfdym z nich\par
+Jan.przedstaw_sie()\par
+Adam.przedstaw_sie()\par
+    \par
+wiek_Adama_przed = Adam.urodziny()\par
+Adam.przedstaw_sie()\par
+\cf3 print "Wiek Adama sprzed urodzin: \{0\}".format(wiek_Adama_przed) \tab # na stronie wiek_Adama_przed by\'b3 w klamrach \{\} zamiast 0, ale kod nie dzia\'b3a\'b3 po wklejeniu do pix blocks\par
+\cf0 # odwo\'b3ujemy si\'ea do p\'f3l, modyfikujemy je\par
+Jan.imie = "Stanis\'b3aw"\par
+Jan.nazwisko = "Witkiewicz"\par
+Jan.wiek = 133\par
+Jan.przedstaw_sie()\par
+\cf4 if __name__ == "__main__":\par
+    main()\tab\tab\tab # bez tego te\'bf dzia\'b3a, nie wiem co to jest\cf0\par
+\cf2 Jestem Jan Nowak. Mam 48 lat.\par
+Jestem Adam Mickiewicz. Mam 220 lat.\par
+Jestem Adam Mickiewicz. Mam 221 lat.\par
+Wiek Adama sprzed urodzin: 220\par
+Jestem Stanislaw Witkiewicz. Mam 133 lat.\cf0\par
+\highlight5 -------------------------------------------------funkcja enumerate()\par
+\highlight0 lista = ['Alice', 'Bob', 'Charlie']\par
+for name in lista:\par
+    print(name)\par
+# Alice\par
+# Bob\par
+# Charlie\par
+\highlight5 ---------dzi\'eaki funkcji enumerate otrzymujemy index:\par
+\highlight0 for i, name in enumerate(lista):\par
+    print(i, name)\par
+# 0 Alice\par
+# 1 Bob\par
+# 2 Charlie\par
+\highlight5 ------------mo\'bfemy ten index zmieni\'e6:\par
+\highlight0 for i, name in enumerate(lista, 1):\par
+    print(i, name)\par
+# 1 Alice\par
+# 2 Bob\par
+# 3 Charlie\par
+\highlight5 ---------------lub jeszcze dalszy indeks:\par
+\highlight0 for i, name in enumerate(lista, 42):\par
+    print(i, name)\par
+# 42 Alice\par
+# 43 Bob\par
+# 44 Charlie\par
+\highlight5 -------------lub co kt\'f3ry\'9c indeks, np co trzeci, ale trzeba to obmy\'9cli\'e6 sprytnie:\par
+\highlight0 step = 3\par
+for i, name in enumerate(lista):\par
+    print(i * step, name)\par
+# 0 Alice\par
+# 3 Bob\par
+# 6 Charlie\par
+\highlight5 ---------- jeszcze inne udziwnienia, jako ciekawostka:\par
+\highlight0 (this is useful when generating a serial number string. It is smarter to pass the starting number in the second argument of the enumerate() than to calculate i + 1)\par
+for i, name in enumerate(lista, 1):\par
+    print('\{:03\}_\{\}'.format(i, name))\par
+# 001_Alice\par
+# 002_Bob\par
+# 003_Charlie\par
+:03 daje zapis jakby 3 miejsca mia\'b3 string, :04 daje string 4literowy, ale wstawia to co ma, czyli i w to miejsce. Inny przyk\'b3\'b9d:\par
+lista = ['Spring', 'Summer', 'Fall', 'Winter']\par
+print (\cf3 sorted\cf0 (lista))\tab # ['Fall', 'Spring', 'Summer', 'Winter']\tab\tab tak przy okazji sortowanie\par
+for i, name in enumerate(lista, 1):\par
+    print('\{:04\}_\{\}'.format(i, name))\par
+\cf6 0001_Spring\par
+0002_Summer\par
+0003_Fall\par
+0004_Winter\cf0\par
+for i, name in enumerate(lista, 3):\par
+    print('\{0\}_\{2\}.\{2\} \{1\}'.format(i, name,'\cf6 lala\cf0 '))\tab # tutaj mo\'bfna te\'bf podstawi\'e6 jakie\'9c s\'b3owo\par
+3_lala.lala Spring\par
+4_lala.lala Summer\par
+5_lala.lala Fall\par
+6_lala.lala Winter\par
+\highlight5 --------------------sortowanie listy\tab :\tab\tab\highlight0 lista = ['Spring', 'Summer', 'Fall', 'Winter']\highlight5\par
+\highlight0 print (sorted(lista))\tab\tab # ['Fall', 'Spring', 'Summer', 'Winter']\par
+print (lista)\tab\tab\tab # ['Spring', 'Summer', 'Fall', 'Winter'] sama lista sie nie zmieni\'b3a\par
+\cf3 lista.sort()\tab\tab\tab # print (lista.sort()) wywala None\cf0\par
+print (lista)\tab\tab\tab # ['Fall', 'Spring', 'Summer', 'Winter']\par
+\highlight5 ---------------\cf3 sort() and sorted(), to sort lists (list)\cf0  in ascending or descending order.\par
+ If you want to sort \cf3 strings \cf0 (str) or \cf3 tuples\cf0  (tuple), use \cf3 sorted()\cf0\par
+\highlight0 org_list = [3, 1, 4, 5, 2]\par
+org_list.sort()\par
+print(org_list)\tab\tab\tab\tab # [1, 2, 3, 4, 5]\par
+print(org_list.sort())\tab\tab\tab\tab # None\par
+\highlight5 By \cf3 default\cf0 , the list is \cf3 sorted in ascending order\cf0 . \par
+If you want to sort in \cf3 descending order\cf0 , set the parameter \cf3 reverse \cf0 to \cf3 True\cf0 .\par
+\highlight0 org_list.sort(\cf3 reverse=True\cf0 )\par
+print(org_list)\tab\tab\tab\tab # [5, 4, 3, 2, 1]\par
+\highlight5 ----------sortowanie tupli (krotki):\par
+\highlight0 org_tuple = (3, 1, 4, 5, 2)\par
+new_tuple_list = \cf3 sorted\cf0 (org_tuple)\par
+print(org_tuple)\tab\tab # (3, 1, 4, 5, 2) \tab sama  tupla sie nie zmienia\par
+print(new_tuple_list)\tab\tab # [1, 2, 3, 4, 5]\tab\cf3 powstaje lista!\cf0\par
+\highlight5 --------spowrotem zmieni\'e6 liste w tuple:\par
+\highlight0 new_tuple = \cf3 tuple\cf0 (new_tuple_list)\par
+print(new_tuple)\tab\tab\tab # (1, 2, 3, 4, 5)\par
+---------\par
+new_tuple = tuple(sorted(new_tuple_list))\par
+print(new_tuple)\tab\tab\tab # (1, 2, 3, 4, 5)\par
+new_tuple_reverse = tuple(sorted(new_tuple_list, \cf3 reverse=True\cf0 ))\par
+print(new_tuple_reverse)\tab\tab\tab # (5, 4, 3, 2, 1)\par
+\par
+\lang1033\f1\par
+}
+ 
